@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Job Application Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f1f1;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 30px;
+      padding: 20px;
+      background: #e9f7ef;
+      border: 1px solid #28a745;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Job Application Form</h2>
+    <form id="applicationForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" required>
+
+      <label for="address">Address</label>
+      <textarea id="address" rows="3" required></textarea>
+
+      <label for="year">Graduation Year</label>
+      <input type="number" id="year" min="2000" max="2100" required>
+
+      <label for="branch">Branch</label>
+      <input type="text" id="branch" required>
+
+
+      <label for="position">Position Applying For</label>
+      <input type="text" id="position" required>
+
+      <button type="submit">Submit Application</button>
+    </form>
+
+    <div class="result" id="result" style="display:none;"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('applicationForm');
+    const resultDiv = document.getElementById('result');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
+      const year = document.getElementById('year').value;
+      const branch = document.getElementById('branch').value;
+      const position = document.getElementById('position').value;
+
+      resultDiv.style.display = "block";
+      resultDiv.innerHTML = `
+        <h3>Submitted Data</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Address:</strong> ${address}</p>
+        <p><strong>Graduation Year:</strong> ${year}</p>
+        <p><strong>Branch:</strong> ${branch}</p>
+        
+        <p><strong>Position:</strong> ${position}</p>
+      `;
+    });
+  </script>
+</body>
+</html>
